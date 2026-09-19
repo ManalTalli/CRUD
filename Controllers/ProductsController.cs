@@ -17,31 +17,38 @@ namespace CRUD.Controllers
             return View();
         }
 
-        public ViewResult Store(Product request)
+        public IActionResult Store(Product request)
         {
+            if (ModelState.IsValid) { 
             context.Products.Add(request);
 
             context.SaveChanges();
+                var products = context.Products.ToList();
 
-            return View("Create");
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("Create");
+            }
         }
-        public ViewResult Details(int id)
+        public IActionResult Details(int id)
         {
             var User = context.Products.Find(id);
             return View(User);
         }
-        public ViewResult Edit(int id)
+        public IActionResult Edit(int id)
         {
             var Product = context.Products.Find(id);
             return View(Product);
         }
-        public ViewResult Update(Product request)
+        public IActionResult Update(Product request)
         {
             context.Products.Update(request);
             context.SaveChanges();
             return View("Create");
         }
-        public ViewResult Delete(int id)
+        public IActionResult Delete(int id)
         {
 
             var Product = context.Products.Find(id);
