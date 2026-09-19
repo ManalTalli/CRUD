@@ -14,7 +14,7 @@ namespace CRUD.Controllers
         }
         public ViewResult Create()
         {
-            return View();
+            return View(new Product());
         }
 
         public IActionResult Store(Product request)
@@ -29,7 +29,7 @@ namespace CRUD.Controllers
             }
             else
             {
-                return View("Create");
+                return View("Create", request);
             }
         }
         public IActionResult Details(int id)
