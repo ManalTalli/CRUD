@@ -1,0 +1,26 @@
+﻿@model List<Product>
+<h1>Users</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>@product.Rate</td>
+                <td>
+                    <a href="/Products/Details/@product.Id">Details</a>
+                    <a href="/Products/Delete/@product.Id">Delete</a>
+                    <a href="/Products/Edit/@product.Id">Edit</a>
+
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
